@@ -1,0 +1,103 @@
+header {
+
+}
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0px;
+    background-color: #232323;
+    padding: 50px 0px 20px;
+    color: white;
+}
+footer .info {
+    width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+footer .copy { 
+    text-align: center; 
+}
+
+.topmenubar {
+    background-color: rgb(46, 46, 46);
+    
+}
+.sidebarbox {
+    background: linear-gradient(to right, rgb(67, 193, 231), rgb(213, 227, 231));
+}
+.sidebarbox {
+    position: relative;
+    width: 240px;
+    height: 100vh;
+}
+.sidebar {
+    width: 240px;
+    height: 100vh;
+}
+.content .ann {
+    margin:50px;
+    height: 300px;
+    width: 800px; 
+    border: 1px;
+    position: relative;
+    top: 50px;
+}
+.content h2 {
+
+}
+
+.form-title {
+    width: 400px;
+}
+
+.form-writer {
+    width: 400px;
+}
+
+.form-content {
+    width: 400px;
+}
+
+.insert-space {
+    width: 900px;
+    margin-left: 100px;
+}
+h2.py-1 {
+    font-weight: bold; 
+    font-size: 40px; 
+}
+h2.py-3 {
+    font-weight: bold; 
+    font-size: 40px; 
+}
+.production_check {
+    position: relative;
+    margin: 50px;
+    height: 40px;
+    width: 300px;  
+}
+.production_searchbox {
+    width: 800px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.production_searchbox input {
+    width: 300px;
+}
+.production_searchbox label,
+.production_searchbox select,
+.production_searchbox input[type="text"] {
+    margin: 5px;
+}
+
+.productioninsert {
+    width: 960px;
+    margin: 0 auto;
+}
+.productionbox {
+    width: 500px;
+}
