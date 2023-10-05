@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- 근태 관리 Attendence management -->
 <!DOCTYPE html>
 <html lang="en">
