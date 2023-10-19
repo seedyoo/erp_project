@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-image:#34495e;
+}
+
+.joinForm {
+  position:absolute;
+  width:400px;
+  height:400px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:30%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
+.joinForm h2 {
+  text-align: center;
+  margin: 30px;
+}
+
+.textForm {
+  border-bottom: 2px solid #adadad;
+  margin: 15px;
+  padding: 10px 10px;
+}
+
+
+.id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.name {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.email {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.zipaddress {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.cellphoneNo {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.btn {
+  position:relative;
+  left:40%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:80%;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+.btn:hover {
+  background-position: right;
+}
+    </style>
+</head>
+<body>
+    <form action="regmempro.jsp" method="POST" class="joinForm" id="joinfrm">
+                                                                                               
+        <h2>회원가입</h2>
+        
+        <div class="textForm">
+          <input name="mid" type="text" class="id" placeholder="아이디">
+          </input>
+        </div>
+        <div class="textForm">
+          <input name="mpw" type="password" class="pw" placeholder="비밀번호">
+        </div>
+        
+        <div class="textForm">
+          <input name="name" type="text" class="name" placeholder="이름">
+        </div>
+         <div class="textForm">
+          <input name="email" type="text" class="email" placeholder="이메일">
+        </div>
+        <div class="textForm">
+          <input name="zip_code" type="text" class="zipaddress" placeholder="우편번호">
+        </div>
+        <div class="textForm">
+            <input name="address" type="text" class="email" placeholder="주소">
+          </div>
+          <div class="textForm">
+            <input name="address2" type="text" class="email" placeholder="상세주소">
+          </div>
+        <div class="textForm">
+          <input name="cellphone" type="number" class="email" placeholder="전화번호">
+        </div>
+        <input type="button" class="btn" value="J O I N" onclick="regmem();"/>
+      </form>
+      
+      <script src="js/jquery-3.7.0.min.js"></script>
+      <script>
+		  function regmem() {
+			  // 아이디 체크
+			  id = $('.id').val();
+			  if(id == "") {
+			  	alert("아이디를 입력하시오");
+				  return;
+			  }
+			  
+			  // 비밀번호 체크
+			  pw = $('.pw').val();
+			  if(pw == "") {
+			  	alert("비밀번호를 입력하시오");
+				  return;
+			  }
+			  
+			  name = $('.name').val();
+			  if(name == "") {
+			  	alert("이름을 입력하시오");
+				  return;
+			  }
+			  $('#joinfrm').submit();
+		  }
+	  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

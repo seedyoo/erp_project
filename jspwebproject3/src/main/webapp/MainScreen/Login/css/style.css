@@ -1,0 +1,74 @@
+body {
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+}
+header .container .icon-box {
+    padding: 24px;
+}
+header .container .icon-box a {
+    font-size: 24px;
+}
+.btn-blue { background-color: #3b5998; }
+.btn-blue:hover, .btn-blue:active, btn-blue:focus { background-color: #233763 !important; }
+
+.form-outline {
+    position: relative;
+}
+
+.form-outline input:focus {
+    box-shadow: 0 0 0 0 transparent;
+    border-color: royalblue;
+    border-width: 2px;
+}
+.form-outline input:focus ~.form-laber {
+    top: 0;
+    color: royalblue;
+    background-color: white;
+    font-size: 12px;
+}
+
+.form-laber {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: gray;
+    padding: 0 4px;
+    transition: all 0.4s;
+}
+
+.d-flex .item {
+
+}
+
+/* 사이드바 */
+.side-bar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    bottom: 0;
+    height: 100%;
+    width: 300px;
+    background-color: var(--sub);
+    z-index: 10;
+    transition: all 1s;
+    padding: 20px;
+}
+
+/* 사이드바 오픈 */
+.side-bar.active {
+    right: 0;
+}
+
+.side-bar .btn-box { 
+    display: flex; 
+    justify-content: flex-end;
+}
+.side-bar .btn-box a {
+    font-size: 32px;
+    color: white;
+}
+
+/* sign_up-회원가입란 */
+.form-textbox {
+    
+}

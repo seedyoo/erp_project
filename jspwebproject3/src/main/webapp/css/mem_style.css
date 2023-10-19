@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.title {
+	color: blue;
+}
+table{
+	width: 640px;
+}
+table th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+}
+table td {
+	border-bottom: 1px solid black;
+	text-align: center;
+}
