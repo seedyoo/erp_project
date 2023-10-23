@@ -31,6 +31,25 @@
 			        <a target="_blank" href="https://datatables.net"> official DataTables documentation </a>
 			        .
 			      </p> -->
+			      <div class="hrm_check">
+			            
+			            <hr>
+			            
+			            <form class="hrm_searchbox">
+			                <select id="department" name="department">
+			                    <option value="hr">제목</option>
+			                    <option value="finance">내용</option>
+			                    <option value="it">글쓴이</option>
+			                    <option value="marketing">제목+내용</option>
+			                    
+			                </select>
+			        
+			                <input type="text" id="employee_number" name="employee_number" required>
+			        
+			                <button type="submit" class="hpr_search-button">조 회</button>
+			            </form>
+			        </div>
+			        <hr>
 			      <!-- DataTales Example -->
 			      <div class="card shadow mb-4 mt-4">
 			        <div class="card-header py-3">
@@ -42,10 +61,10 @@
 			              <thead>
 			                <tr class="text-center">
 			                  <th>번호</th>
-			                  <th>이름</th>
+			                  <th>글쓴이</th>
 			                  <th>제목</th>
-			                  <th>날짜</th>
 			                  <th>히트</th>
+			                  <th>날짜</th>
 			                  <th class="text-center">삭제 및 댓글</th>
 			                </tr>
 			              </thead>
@@ -62,8 +81,8 @@
 			                  <td>${board.bhit}</td>
 			                  <td>${board.bdate}</td>
 			                  <td>
-			                    <a href="${pageContext.request.contextPath}/board/delete/${board.bid}"><button class="btn btn-success" value="${board.bid}">삭제</button></a>
 			                    <a href="${pageContext.request.contextPath}/board/reply_view/${board.bid}"><button class="btn btn-success" value="${board.bid}">댓글</button></a>
+			                    <a href="${pageContext.request.contextPath}/board/delete/${board.bid}"><button class="btn btn-danger" value="${board.bid}">삭제</button></a>
 			                  </td>
 			                </tr>
 			                </c:forEach>	

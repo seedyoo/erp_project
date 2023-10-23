@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/board/list">공지게시판</a>
+          <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/board/list">HOME</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="${pageContext.request.contextPath}/lotto">로또</a>
