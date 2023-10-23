@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.sidebars {
+	width: 200px;
+    background-color: #f4f4f4;
+    border: 1px solid #d0d0d0;
+    border-top: 0;
+    border-bottom: 0;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.maincontents {
+	padding: 0 0 20px;
+    width: calc(100% - 200px);
+    background-color: #fff;
+}
