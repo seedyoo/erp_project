@@ -58,15 +58,16 @@
       </li>
       <li class="border-top my-3"></li>
             <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>mdo</strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">환경설정</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
+	            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+	                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+	                <strong>mdo</strong>
+	            </a>
+	            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+	                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/admin_list">관리자페이지</a></li>
+	                <li><a class="dropdown-item" href="#">환경설정</a></li>
+	                <li><hr class="dropdown-divider"></li>
+	                <li><a class="dropdown-item" href="#">Sign out</a></li>
+	            </ul>
             </div>
     </ul>
   </div>

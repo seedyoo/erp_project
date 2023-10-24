@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>공지사항</title>
+	<title>관리자페이지</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	 
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -27,7 +27,7 @@
 				<div class="container mt-3">
 				    <div class="container-fluid">
 				      <!-- Page Heading -->
-				      <h1 class="text-center h3 mb-2 text-gray-800 mt-4">공지게시판</h1>
+				      <h1 class="text-center h3 mb-2 text-gray-800 mt-4">유저목록</h1>
 				      <!-- <p class="mb-4">
 				        DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the{' '}
 				        <a target="_blank" href="https://datatables.net"> official DataTables documentation </a>
@@ -39,10 +39,9 @@
 				            
 				            <form class="hrm_searchbox">
 				                <select id="department" name="department">
-				                    <option value="hr">제목</option>
-				                    <option value="finance">내용</option>
-				                    <option value="it">글쓴이</option>
-				                    <option value="marketing">제목+내용</option>
+				                    <option value="hr">ID</option>
+				                    <option value="finance">이름</option>
+				                    <option value="marketing">ID+이름</option>
 				                    
 				                </select>
 				        
@@ -63,12 +62,11 @@
 				            
 				              <thead>
 				                <tr class="text-center">
-				                  <th>번호</th>
-				                  <th>글쓴이</th>
-				                  <th>제목</th>
-				                  <th>히트</th>
-				                  <th>날짜</th>
-				                  <th class="text-center">삭제 및 댓글</th>
+				                  <th>유저ID</th>
+				                  <th>유저PW</th>
+				                  <th>유저이름</th>
+				                  <th>가입날짜</th>
+				                  <th class="text-center">삭제</th>
 				                </tr>
 				              </thead>
 				
@@ -79,13 +77,11 @@
 				                  <td>${board.bname}</td>
 				                  <td>
 				                  	<c:forEach begin="1" end="${board.bindent}">[Re]</c:forEach>
-				                    <a href="${pageContext.request.contextPath}/board/content/${board.bid}">${board.btitle}</a>
+				                    <a href="${pageContext.request.contextPath}/admin/content/${board.bid}">${board.btitle}</a>
 				                  </td>
-				                  <td>${board.bhit}</td>
 				                  <td>${board.bdate}</td>
 				                  <td>
-				                    <a href="${pageContext.request.contextPath}/board/reply_view/${board.bid}"><button class="btn btn-success" value="${board.bid}">댓글</button></a>
-				                    <a href="${pageContext.request.contextPath}/board/delete/${board.bid}"><button class="btn btn-danger" value="${board.bid}">삭제</button></a>
+				                    <a href="${pageContext.request.contextPath}/admin/delete/${board.bid}"><button class="btn btn-danger" value="${board.bid}">삭제</button></a>
 				                  </td>
 				                </tr>
 				                </c:forEach>	

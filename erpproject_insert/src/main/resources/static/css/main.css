@@ -7,25 +7,37 @@
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
 body {
-	  height: 100vh;
+	  height: 150vh;
 	  display: flex;
 	  flex-direction: column;
 	  justify-content: space-between;
 }
+
 .sidebars {
 	position: relative;
 	width: 280px;
-    background-color: #f4f4f4;
+	height: 100%;
+    background: linear-gradient(to right, rgb(67, 193, 231), rgb(213, 227, 231));
     border: 1px solid #d0d0d0;
     border-top: 0;
     border-bottom: 0;
     box-sizing: border-box;
     line-height: 1;
 }
+.container {
+	width: 95%;
+	height: 100%;
+}
 
-
+.maincontents {
+	height: 100%;
+}
 .contentsbox {
 	width: calc(100% - 280px);
+}
+
+.mainbox {
+	height: 100%;
 }
 .dropdown-toggle { outline: 0; }
 
@@ -68,5 +80,8 @@ body {
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
+}
+footer {
+	color: white;
 }
 

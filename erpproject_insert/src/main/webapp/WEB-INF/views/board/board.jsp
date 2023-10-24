@@ -15,7 +15,11 @@
 <body>
  	<%@ include file="../common/header.jsp" %>  
 
-<main>
+<main class="d-flex flex-nowrap">
+	<section class="sidebars">
+ 	<%@ include file="../common/sidebars.jsp" %>
+ 	</section>
+ 	
 <div class="container mt-3">
     <div class="container-fluid">
       <!-- Page Heading -->
