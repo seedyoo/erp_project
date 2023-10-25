@@ -3,6 +3,7 @@ package edu.human.prj.page;
 import java.util.List;
 
 import edu.human.prj.vo.BoardVO;
+import edu.human.prj.vo.UsersVO;
 
 import lombok.Getter;
 import lombok.Setter;

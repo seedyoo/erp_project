@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.human.prj.mapper.UsersMapper">
+
+	<!-- <typeAlias type="edu.human.prj.vo.BoardVO" alias="BoardVO" /> -->
+
+ 	<select id="getList" resultType="UsersVO">
+		<![CDATA[
+			select  * from users order by users_num desc
+		]]>
+	</select>
+
+	<select id="read" resultType="UsersVO">
+	<![CDATA[
+		select * from users where users_Id = #{users_id}
+	]]>
+	</select>
+
+
+
+
+
+
+
+	<delete id="delete">
+	<![CDATA[
+		delete from users where users_Id = #{users_id}
+	]]>
+	</delete>
+
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from users
+	</select>
+
+	<select id="getListWithPaging"
+		resultType="UsersVO">
+  		 <![CDATA[
+      		SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             users 
+                         order by users_Num desc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+ 		  ]]>
+	</select> 
+</mapper>

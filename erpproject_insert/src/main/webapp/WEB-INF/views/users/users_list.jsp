@@ -54,7 +54,7 @@
 				      <!-- DataTales Example -->
 				      <div class="card shadow mb-4 mt-4">
 				        <div class="card-header py-3">
-				          <h6 class="m-0 font-weight-bold text-primary">공지사항</h6>
+				          <h6 class="m-0 font-weight-bold text-primary">유저정보</h6>
 				        </div>
 				        <div class="card-body">
 				          <div class="table-responsive">
@@ -71,17 +71,17 @@
 				              </thead>
 				
 				              <tbody>
-				              <c:forEach var="board" items="${boards}">
+				              <c:forEach var="users" items="${userss}">
 				                <tr class="text-center">
-				                  <td>${board.bid}</td>
-				                  <td>${board.bname}</td>
+				                  <td>${users.users_id}</td>
+				                  <td>${users.users_pw}</td>
 				                  <td>
 				                  	<c:forEach begin="1" end="${board.bindent}">[Re]</c:forEach>
-				                    <a href="${pageContext.request.contextPath}/admin/content/${board.bid}">${board.btitle}</a>
+				                    <a href="${pageContext.request.contextPath}/admin/content/${users.users_id}">${users.users_name}</a>
 				                  </td>
-				                  <td>${board.bdate}</td>
+				                  <td>${users.users_join}</td>
 				                  <td>
-				                    <a href="${pageContext.request.contextPath}/admin/delete/${board.bid}"><button class="btn btn-danger" value="${board.bid}">삭제</button></a>
+				                    <a href="${pageContext.request.contextPath}/users/delete/${users.users_id}"><button class="btn btn-danger" value="${users.users_id}">삭제</button></a>
 				                  </td>
 				                </tr>
 				                </c:forEach>	
@@ -116,15 +116,17 @@
 				              
 				            </ul>
 				          </nav>
+				          
 				          <hr/>
+				          
 				          <div class="d-flex justify-content-center">
-				            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">글쓰기</button>
+				            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">유저등록</button>
 				            <!-- 모달 스타트 -->
 				            <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				              <div class="modal-dialog modal-sl modal-dialog-centered">
 				                <div class="modal-content">
 				                  <div class="modal-header">
-				                    <h5 class="modal-title" id="exampleModalLabel">글쓰기</h5>
+				                    <h5 class="modal-title" id="exampleModalLabel">유저등록</h5>
 				                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button><br />
 				                  </div>
 				                  

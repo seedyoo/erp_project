@@ -63,7 +63,7 @@
 	                <strong>mdo</strong>
 	            </a>
 	            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-	                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/admin_list">관리자페이지</a></li>
+	                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/users/users_list">관리자페이지</a></li>
 	                <li><a class="dropdown-item" href="#">환경설정</a></li>
 	                <li><hr class="dropdown-divider"></li>
 	                <li><a class="dropdown-item" href="#">Sign out</a></li>
