@@ -114,7 +114,7 @@
 		                                    <label for="floatingPosition">직급</label>
 		                                  </div>
 		                                  <div class="form-floating mb-2">
-		                                    <input type="text" class="form-control" id="floatingSsnum" placeholder="Rrnum">
+		                                    <input type="text" class="form-control" id="floatingRrnum" placeholder="Rrnum">
 		                                    <label for="floatingRrnum">주민번호</label>
 		                                  </div>
 		                                  <div class="form-floating mb-2">

@@ -77,11 +77,11 @@
 				                  <td>${users.users_pw}</td>
 				                  <td>
 				                  	<c:forEach begin="1" end="${board.bindent}">[Re]</c:forEach>
-				                    <a href="${pageContext.request.contextPath}/admin/content/${users.users_id}">${users.users_name}</a>
+				                    <a href="${pageContext.request.contextPath}/users/users_content/${users.users_id}">${users.users_name}</a>
 				                  </td>
 				                  <td>${users.users_join}</td>
 				                  <td>
-				                    <a href="${pageContext.request.contextPath}/users/delete/${users.users_id}"><button class="btn btn-danger" value="${users.users_id}">삭제</button></a>
+				                    <a href="${pageContext.request.contextPath}/users/users_delete/${users.users_id}"><button class="btn btn-danger" value="${users.users_id}">삭제</button></a>
 				                  </td>
 				                </tr>
 				                </c:forEach>	
@@ -132,21 +132,55 @@
 				                  
 				                  <form id="modal-form" action="${pageContext.request.contextPath}/board/write" method="POST" role="form">
 					                  <div class="modal-body">
-					                    <div class="mb-3">
-					                      <label for="recipient-name" class="col-form-label">작성자:</label>
-					                      <input type="text" name="bname" class="form-control" />
-					                    </div>
-					                    <div class="mb-3">
-					                      <label for="recipient-name" class="col-form-label">제목:</label>
-					                      <input type="text" name="btitle"  class="form-control" />
-					                    </div>
-					                    <div class="mb-3">
-					                      <label for="message-text" class="col-form-label">내용:</label>
-					                      <textarea class="form-control" name="bcontent"  rows="8" ></textarea>
-					                    </div>
+					                  
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-id" placeholder="Id" name="users_id">
+		                                  <label for="recipient-id" class="col-form-label">아이디</label>
+		                                  <div class="double_check text-end">
+		                                  	<a href="#" class="btn btn-outline-secondary mt-2">중복확인</a>
+		                                  </div>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-pw" placeholder="Pw" name="users_pw">
+		                                  <label for="recipient-pw" class="col-form-label">비밀번호</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-pw" placeholder="Pw" name="users_pw">
+		                                  <label for="recipient-pw" class="col-form-label">비밀번호확인</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-name" placeholder="Name" name="users_name">
+		                                  <label for="recipient-name" class="col-form-label">이름</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-position" placeholder="Position" name="users_position">
+		                                  <label for="recipient-position" class="col-form-label">직급</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-rrnum" placeholder="Rrnum" name="users_rrnum">
+		                                  <label for="recipient-rrnum" class="col-form-label">주민번호</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-email" placeholder="Email" name="users_email">
+		                                  <label for="recipient-email" class="col-form-label">이메일</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-add" placeholder="Add" name="users_add">
+		                                  <label for="recipient-add" class="col-form-label">주소</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <input type="text" class="form-control" id="recipient-hp" placeholder="Hp" name="users_hp">
+		                                  <label for="recipient-hp" class="col-form-label">전화번호</label>
+		                                </div>
+					                    <div class="form-floating mb-3">
+		                                  <textarea class="form-control" id="recipient-remarks" placeholder="Remarks" name="users_remarks" ></textarea>
+		                                  <label for="recipient-remarks" class="col-form-label">비고</label>
+		                                </div>
+		                                
 					                  </div>
+					                  
 					                  <div class="modal-footer">
-					                    <button id="send-board" type="button" class="btn btn-primary" data-bs-dismiss="modal" >전송</button>
+					                    <button id="users_send-users" type="button" class="btn btn-primary" data-bs-dismiss="modal" >전송</button>
 					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 					                  </div>
 				                  </form>
@@ -172,7 +206,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){	
-	$( "#send-board" ).on( "click", function() {
+	$( "#users_send-users" ).on( "click", function() {
 		$("#modal-form").submit();
 	});
 });

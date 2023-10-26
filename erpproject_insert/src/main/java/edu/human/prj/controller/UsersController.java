@@ -68,18 +68,18 @@ public class UsersController {
 		return "redirect:/users/users_list";
 	}
 	
-	@GetMapping("/content/{users_id}")
+	@GetMapping("/users_content/{users_id}")
 	public String content(UsersVO users,Model model) {
-		log.info("content() .." + users);		
+		log.info("users_content() .." + users);		
 		
 		model.addAttribute("users",usersService.get(users.getUsers_id()));		
 		
-		return "/users/update";
+		return "/users/users_update";
 	}
 	
-	@PostMapping("/update")
+	@PostMapping("/users_update")
 	public String update(UsersVO users) {
-		log.info("update() .." + users);
+		log.info("users_update() .." + users);
 		
 		usersService.modify(users);				
 		

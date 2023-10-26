@@ -18,7 +18,11 @@
 	]]>
 	</select>
 
-
+	<insert id="insertUsers">
+	<![CDATA[
+		insert into users (users_id, users_pw, users_name, users_rrnum, users_email, users_hp, users_add, users_position, users_join, users_remarks, users_num) values (#{users_id}, #{users_pw}, #{users_name}, #{users_rrnum}, #{users_email}, #{users_hp}, #{users_add}, #{users_position}, sysdate, #{users_remarks}, users_sequence.nextval )
+	]]>
+	</insert>
 
 
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>개인프로젝트</title>
+	<title>공지 작성</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	 
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -13,8 +13,11 @@
 </head>
 
 <body>
- 	<%@ include file="../common/header.jsp" %>
-<main>
+ 	<header>
+ 		<%@ include file="../common/header.jsp" %>
+ 	</header>
+ 	
+<main class="mainbox d-flex flex-nowrap">
   <div class="container mt-3">
       <div class="container">
         <div class="row">
@@ -58,6 +61,7 @@
 </main>
 
 	<%@ include file = "../common/footer.jsp" %>
+	
 </body>
 
 <script type="text/javascript">

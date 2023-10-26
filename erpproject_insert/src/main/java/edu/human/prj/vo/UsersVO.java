@@ -26,6 +26,7 @@ public class UsersVO {
 	private Timestamp users_join;
 	private String users_remarks;
 	private String enabled;
+	private int users_num;
 
 	
 	
