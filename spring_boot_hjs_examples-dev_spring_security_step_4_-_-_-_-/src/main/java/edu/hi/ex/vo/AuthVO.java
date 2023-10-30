@@ -12,6 +12,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class AuthVO {
-	private String username;
+	private String users_id;
 	private String authority;	
 }

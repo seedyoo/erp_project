@@ -2,6 +2,7 @@ package edu.human.prj.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.human.prj.page.Criteria;
@@ -18,4 +19,14 @@ public interface UsersMapper {
 	public String updateUsers(UsersVO usersVO);	
 	public List<UsersVO> getListWithPaging(Criteria cri);	
 	public int getTotalCount();
+	
+	public UsersVO getUser(String users_id);	
+	
+	@Insert("insert into users(users_id,users_pw,enabled) values(#{users_id},#{users_pw},#{enabled})")
+	public int insertUser(UsersVO usersVO);
+
+	@Insert("insert into AUTHORITIES (users_id,AUTHORITY) values(#{users_id},'ROLE_USER')")
+	public void insertAuthorities(UsersVO UsersVO);
+	
+	
 }

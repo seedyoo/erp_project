@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  	
 <mapper namespace="edu.human.prj.mapper.UsersMapper">
 
 	<!-- <typeAlias type="edu.human.prj.vo.BoardVO" alias="BoardVO" /> -->
@@ -24,16 +25,11 @@
 	]]>
 	</insert>
 
-
-
-
-
 	<delete id="delete">
 	<![CDATA[
 		delete from users where users_Id = #{users_id}
 	]]>
 	</delete>
-
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from users
@@ -53,4 +49,22 @@
          ) WHERE RNUM > (#{pageNum}-1) * #{amount}
  		  ]]>
 	</select> 
+	
+	<resultMap id="userMap" type="UsersVO">
+	    <result property="users_id" column="users_id"/>
+	    <result property="users_pw" column="users_pw"/>
+	    <result property="enabled" column="enabled"/>
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap id="authMap" type="AuthVO">
+		<result property="users_id" column="users_id"/>
+		<result property="authority" column="authority"/>
+	</resultMap>
+	
+	<select id="getUser" resultMap="userMap">
+		select * from users , authorities 
+		where users.users_id = authorities.users_id and users.users_id = #{users_id}
+	</select>
+	
 </mapper>

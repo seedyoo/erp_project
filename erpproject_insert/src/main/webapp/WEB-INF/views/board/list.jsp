@@ -84,7 +84,7 @@
 				                  <td>${board.bhit}</td>
 				                  <td>${board.bdate}</td>
 				                  <td>
-				                    <a href="${pageContext.request.contextPath}/board/reply_view/${board.bid}"><button class="btn btn-success" value="${board.bid}">댓글</button></a>
+				                    <a href="${pageContext.request.contextPath}/board/reply_view/${board.bid}"><button class="btn btn-success" value="${board.bid}">수정</button></a>
 				                    <a href="${pageContext.request.contextPath}/board/delete/${board.bid}"><button class="btn btn-danger" value="${board.bid}">삭제</button></a>
 				                  </td>
 				                </tr>
@@ -120,6 +120,8 @@
 				              
 				            </ul>
 				          </nav>
+				          
+				          
 				          <hr/>
 				          <div class="d-flex justify-content-center">
 				            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">글쓰기</button>

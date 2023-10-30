@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+
+<body onload="document.f.id.focus();">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -25,7 +30,21 @@
       
         <div>
         <div class="d-flex justify-content-center">
+				            
+				            <sec:authorize access="isAnonymous()">
 				            <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
+								<%-- <p><a href="<c:url value="/login" />">로그인</a></p> --%>
+							</sec:authorize>
+							
+							<sec:authorize access="isAuthenticated()">
+								<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+								    <input class="btn btn-outline-light me-2" type="submit" value="로그아웃" />
+								</form:form>
+								<%-- <p><a href="<c:url value="/loginInfo" />">로그인 정보 확인 방법3 가지</a></p> --%>
+							</sec:authorize>
+							
+							
+							
 				            <!-- 모달 스타트 -->
 				            <div class="modal fade"  id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
 				              <div class="modal-dialog modal-sl modal-dialog-centered">
@@ -35,41 +54,55 @@
 				                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button><br />
 				                  </div>
 				                  
-				                  <form id="modal-form" action="${pageContext.request.contextPath}/board/write" method="POST" role="form">
-					                  <div class="modal-body">
-					                  
-					                    <div class="form-floating mb-3">
-			                                <input type="text" class="form-control" id="userid" placeholder="Id">
-			                                <label for="floatingInput-id">아이디</label>
-			                            </div>
-					                    <div class="form-floating mb-3">
-			                                <input type="text" class="form-control" id="userpw" placeholder="Pw">
-			                                <label for="floatingInput-pw">비민번호</label>
-			                            </div>
-					                    
-					                    <div class="form-check d-flex justify-content-around mb-3">
-			                                <div class="item">
-			                                <input type="checkbox" class="form-check-input" id="remember-id">
-			                                <label for="rememver-id" class="form-check-label">아이디 저장</label>
-			                                </div>
-			                            </div>
-					                    <div class="d-flex justify-content-center">
-			                                <div class="item">
-			                                    <a href="#">아이디 찾기</a>
-			                                    <a> / </a>
-			                                    <a href="#">비밀번호 찾기</a>
-			                                </div>
-			                                <div class="item">
-			                                </div>
-			                            </div>
-					                    
-					                  </div>
-					                  
-					                  <div class="modal-footer">
-					                    <button id="send-board" type="button" class="btn btn-primary" data-bs-dismiss="modal" >로그인</button>
-					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-					                  </div>
-				                  </form>
+					                 <c:url value="/login" var="loginUrl" />
+										<%-- <p>${loginUrl}</p> --%>
+										<p></p>
+										
+										<form:form name="f" action="${loginUrl}" method="POST">
+										    <c:if test="${param.error != null}">
+										        <p>아이디와 비밀번호가 잘못되었습니다.</p>
+										    </c:if>
+										    <c:if test="${param.logout != null}">
+										        <p>로그아웃 하였습니다.</p>
+										    </c:if>
+										    <p class="form-floating mb-2">
+										        <input type="text" class="form-control" id="floatingInput" placeholder="Id" name="username" />
+										        <label for="floatingInput">아이디</label>
+										    </p>
+										    <p class="form-floating mb-2">
+										        <input type="password"  class="form-control" id="floatingInput" placeholder="Password" name="password"/>
+										        <label for="floatingInput">비밀번호</label>
+										    </p>
+										    
+										    <!-- <div class="form-check d-flex justify-content-around mb-3">
+				                                <div class="item">
+				                                <input type="checkbox" class="form-check-input" id="remember-id">
+				                                <label for="rememver-id" class="form-check-label">아이디 저장</label>
+				                                </div>
+				                                <div class="item">
+				                                <input type="checkbox" class="form-check-input" id="remember-me">
+				                                <label for="rememver-me" class="form-check-label">자동 로그인</label>
+				                                </div>
+				                            </div> -->
+
+				                            <div class="d-flex justify-content-center">
+				                                <div class="item">
+				                                    <a href="#">아이디 찾기</a>
+				                                    <a> / </a>
+				                                    <a href="#">비밀번호 찾기</a>
+				                                </div>
+				                                <div class="item">
+				                                </div>
+				                            </div>
+										    
+										    <div class="modal-footer">
+										    <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+											    <button type="submit" class="btn btn-primary">로그인</button>
+											    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+										    </div>
+										</form:form>
+
+				               <%--    </form> --%>
 				                  
 				                </div>
 				              </div>
@@ -136,7 +169,7 @@
 					                    
 					                  </div>
 					                  <div class="modal-footer">
-					                    <button id="send-board" type="button" class="btn btn-primary" data-bs-dismiss="modal" >등록</button>
+					                    <button id="send-users" type="button" class="btn btn-primary" data-bs-dismiss="modal" >등록</button>
 					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 					                  </div>
 				                  </form>
@@ -153,3 +186,4 @@
 </nav>
 
 
+</body>

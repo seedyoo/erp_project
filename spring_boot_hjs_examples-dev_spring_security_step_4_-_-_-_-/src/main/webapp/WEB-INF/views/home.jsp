@@ -14,7 +14,7 @@
 <h1>메인페이지</h1>
 
 <sec:authorize access="isAnonymous()">
-	<p><a href="<c:url value="/login/loginForm" />">로그인</a></p>
+	<p><a href="<c:url value="/login" />">로그인</a></p>
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">

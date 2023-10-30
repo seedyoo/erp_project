@@ -28,14 +28,7 @@
 
 </body>
 
-<script type="text/javascript">
 
-$(document).ready(function(){	
-	$( "#send-board" ).on( "click", function() {
-		$("#modal-form").submit();
-	});
-});
-</script>
 
 </html>
 

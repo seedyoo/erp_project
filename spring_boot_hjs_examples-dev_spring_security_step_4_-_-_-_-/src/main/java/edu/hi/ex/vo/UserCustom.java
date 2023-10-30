@@ -21,15 +21,15 @@ import lombok.extern.slf4j.Slf4j;
 public class UserCustom extends User {
 	
 	@Setter(onMethod_ = @Autowired)
-	private UserVO user;
+	private UserVO users;
 	   
-	public UserCustom(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-		super(username, password, authorities);
+	public UserCustom(String users_id, String users_pw, Collection<? extends GrantedAuthority> authorities) {
+		super(users_id, users_pw, authorities);
 	}
 
-	public UserCustom(UserVO user) {
-		super(user.getUsername(), user.getPassword(), getAuth(user));
-		this.user = user;
+	public UserCustom(UserVO users) {
+		super(users.getUsers_id(), users.getUsers_pw(), getAuth(users));
+		this.users = users;
 	}
 
 	public static Collection<? extends GrantedAuthority> getAuth(UserVO memberVO) {

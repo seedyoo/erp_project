@@ -24,13 +24,13 @@ class UserMapperTest {
 //		@Insert("insert into AUTHORITIES (username,AUTHORITY) values(#{username},'ROLE_USER')")
 //		public void insertAuthorities(UserVO UserVO);
 
-		UserVO user = new UserVO();
-		user.setUsername("kim2");
-		user.setPassword(new BCryptPasswordEncoder().encode("kim2"));
-		user.setEnabled(1);
+		UserVO users = new UserVO();
+		users.setUsers_id("yoo");
+		users.setUsers_pw(new BCryptPasswordEncoder().encode("123456"));
+		users.setEnabled(1);
 				
-		userMapper.insertUser(user);
-		userMapper.insertAuthorities(user);
+		userMapper.insertUser(users);
+		userMapper.insertAuthorities(users);
 		
 		
 	}

@@ -8,12 +8,12 @@ import edu.hi.ex.vo.UserVO;
 @Mapper
 public interface UserMapper {
 	
-	public UserVO getUser(String username);	
+	public UserVO getUser(String users_id);	
 	
-	@Insert("insert into users(username,password,enabled) values(#{username},#{password},#{enabled})")
+	@Insert("insert into users(users_id,users_pw,enabled) values(#{users_id},#{users_pw},#{enabled})")
 	public int insertUser(UserVO userVO);
 
-	@Insert("insert into AUTHORITIES (username,AUTHORITY) values(#{username},'ROLE_USER')")
+	@Insert("insert into AUTHORITIES (users_id,AUTHORITY) values(#{users_id},'ROLE_USER')")
 	public void insertAuthorities(UserVO UserVO);
 
 	

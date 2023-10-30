@@ -1,6 +1,7 @@
 package edu.human.prj.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,9 +26,9 @@ public class UsersVO {
 	private String users_position;
 	private Timestamp users_join;
 	private String users_remarks;
-	private String enabled;
+	private int enabled;
 	private int users_num;
 
-	
+	private List<AuthVO> authList;
 	
 }

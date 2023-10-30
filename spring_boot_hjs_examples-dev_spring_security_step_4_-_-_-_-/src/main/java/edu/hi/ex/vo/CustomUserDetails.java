@@ -21,9 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class CustomUserDetails implements UserDetails {
 	
-	private String ID;
-	private String PASSWORD;
-	private String NAME;
+	private String USERS_ID;
+	private String USERS_PW;
+	private String USERS_NAME;
 	private String AUTHORITY;
 	private boolean ENABLED;
 
@@ -36,12 +36,12 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return PASSWORD;
+		return USERS_PW;
 	}
 
 	@Override
 	public String getUsername() {
-		return ID;
+		return USERS_ID;
 	}
 
 	@Override
@@ -65,11 +65,11 @@ public class CustomUserDetails implements UserDetails {
 	}
 
 	public String getNAME() {
-		return NAME;
+		return USERS_NAME;
 	}
 
-	public void setNAME(String name) {
-		NAME = name;
+	public void setNAME(String users_name) {
+		USERS_NAME = users_name;
 	}
 
 }

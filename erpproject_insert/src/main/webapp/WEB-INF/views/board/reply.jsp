@@ -19,13 +19,14 @@
       <div class="container">
         <div class="row">
           <div class="card col-md-6 offset-md-3 offset-md-3">
-            <h3 class="text-center">댓글 달아 주세요</h3>
-            <form id="modal-form" action="${pageContext.request.contextPath}/board/reply" method="POST" role="form">
+            <h3 class="text-center">공지 수정</h3>
+            
+            <form id="modal-form" action="${pageContext.request.contextPath}/board/update" method="POST" role="form">
             <div class="card-body">
               <div class="form-group">
                 <label> Type </label>
                 <select placeholder="type" class="form-control">
-                  <option value="1">자유게시판</option>
+                  <option value="1">공지게시판</option>
                 </select>
               </div>
               <div class="form-group">
@@ -37,7 +38,16 @@
               	<input type="hidden"  value="${board.bstep}" name="bstep" />
               </div>
               <div class="form-group">
-                <label> 이름 </label>
+                <label> 아이디 </label>
+                <input type="text" placeholder="users_id" value="${board.users_id}" class="form-control" disabled readonly />
+              	<input type="hidden" name="users_id" value="${board.users_id}">
+              	<input type="hidden"  value="${board.bgroup}" name="bgroup" />
+              	<input type="hidden" value="${board.bindent}" name="bindent" />
+              	<input type="hidden"  value="${board.bstep}" name="bstep" />
+              </div>
+              
+              <div class="form-group">
+                <label> 작성자 </label>
                 <input type="text" placeholder="bname" value="${board.bname}" class="form-control" name="bname"/>
               </div>
               <div class="form-group">
@@ -49,8 +59,8 @@
                 <textarea placeholder="bcontent" class="form-control" rows="5" name="bcontent">${board.bcontent}</textarea>
               </div>
               <div class="mt-3 d-flex justify-content-between">
-                <button id="update-board" class="btn btn-success">Update</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button id="update-board" class="btn btn-success">수정하기</button>
+                <a href="/board/list" class="btn btn-danger">돌아가기</a>
               </div>
             </div>
             </form>

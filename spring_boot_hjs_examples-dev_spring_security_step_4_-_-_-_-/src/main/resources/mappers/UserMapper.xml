@@ -6,20 +6,20 @@
 <mapper namespace="edu.hi.ex.mapper.UserMapper">
 
 	<resultMap id="userMap" type="UserVO">
-	    <result property="username" column="username"/>
-	    <result property="password" column="password"/>
+	    <result property="users_id" column="users_id"/>
+	    <result property="users_pw" column="users_pw"/>
 	    <result property="enabled" column="enabled"/>
 		<collection property="authList" resultMap="authMap"></collection>
 	</resultMap>
 	
 	<resultMap id="authMap" type="AuthVO">
-		<result property="username" column="username"/>
+		<result property="users_id" column="users_id"/>
 		<result property="authority" column="authority"/>
 	</resultMap>
 	
 	<select id="getUser" resultMap="userMap">
 		select * from users , authorities 
-		where users.username = authorities.username and users.username = #{username}
+		where users.users_id = authorities.users_id and users.users_id = #{users_id}
 	</select>
 	
 

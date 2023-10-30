@@ -24,5 +24,7 @@ public class BoardVO {
 	private int bgroup;
 	private int bstep;
 	private int bindent;
+	private String bremarks;
+	private String users_id;
 }
 
