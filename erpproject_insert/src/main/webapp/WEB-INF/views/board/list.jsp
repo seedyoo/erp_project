@@ -136,6 +136,8 @@
 				                  
 				                  <form id="modal-form" action="${pageContext.request.contextPath}/board/write" method="POST" role="form">
 					                  <div class="modal-body">
+					                  
+					                  
 					                    <div class="mb-3">
 					                      <label for="recipient-name" class="col-form-label">작성자:</label>
 					                      <input type="text" name="bname" class="form-control" />
@@ -148,11 +150,22 @@
 					                      <label for="message-text" class="col-form-label">내용:</label>
 					                      <textarea class="form-control" name="bcontent"  rows="8" ></textarea>
 					                    </div>
+					                    <div class="mb-3">
+					                      <input type="hidden" name="bremarks"  class="form-control" />
+					                    </div>
+					                    <div class="mb-3">
+					                      <input type="hidden" name="users_id"  class="form-control" />
+					                    </div>
+					                    
 					                  </div>
+					                  
 					                  <div class="modal-footer">
-					                    <button id="send-board" type="button" class="btn btn-primary" data-bs-dismiss="modal" >전송</button>
-					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+					                    <input id="send-board" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="전송"/>
+					                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+	<!-- 				                    <button id="send-board" type="button" class="btn btn-primary" data-bs-dismiss="modal" >전송</button>
+					                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button> -->
 					                  </div>
+					                  
 				                  </form>
 				                  
 				                </div>
@@ -175,11 +188,12 @@
 
 <script type="text/javascript">
 
-$(document).ready(function(){	
+/* $(document).ready(function(){	
 	$( "#send-board" ).on( "click", function() {
+		console.log("AAAAAA");
 		$("#modal-form").submit();
 	});
-});
+}); */
 </script>
 
 </html>

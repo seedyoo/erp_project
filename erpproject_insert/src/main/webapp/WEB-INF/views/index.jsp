@@ -21,7 +21,7 @@
 		<section class="sidebars">
 	 		<%@ include file="common/sidebars.jsp" %>
 	 	</section>
-
+		<h6>index화면</h6>
 </main>
 
 		<%@ include file = "common/footer.jsp" %>
