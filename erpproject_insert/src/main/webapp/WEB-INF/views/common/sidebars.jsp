@@ -35,15 +35,15 @@
         </button>
         <div class="collapse" id="materials-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">자재재고관리</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">입고자재관리</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">출고자재관리</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공급망업체정보관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/material/material_stock_list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">자재재고관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/material/material_receive_list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">입고자재관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/material/material_delivery_list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">출고자재관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/material/supply_company_list" class="link-body-emphasis d-inline-flex text-decoration-none rounded">공급망업체정보관리</a></li>
           </ul>
         </div>
       </li>
       
-      <li class="mb-1">
+      <!-- <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#production-collapse" aria-expanded="false">
           생산관리
         </button>
@@ -66,7 +66,7 @@
             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">주문불량품관리</a></li>
           </ul>
         </div>
-      </li>
+      </li> -->
       
       <li class="border-top my-3"></li>
             <div class="dropdown">

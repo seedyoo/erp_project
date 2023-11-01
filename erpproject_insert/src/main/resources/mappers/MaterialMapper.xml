@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.human.prj.mapper.MaterialMapper">
+
+	<!-- <typeAlias type="edu.human.prj.vo.BoardVO" alias="BoardVO" /> -->
+
+ 	<select id="getList" resultType="MaterialVO">
+		<![CDATA[
+			select  * from material_stock order by bGroup desc, bStep asc
+		]]>
+	</select>
+ 	<select id="getList2" resultType="MaterialVO">
+		<![CDATA[
+			select  * from material_receive order by bGroup desc, bStep asc
+		]]>
+	</select>
+ 	<select id="getList3" resultType="MaterialVO">
+		<![CDATA[
+			select  * from material_delivery order by bGroup desc, bStep asc
+		]]>
+	</select>
+ 	<select id="getList4" resultType="MaterialVO">
+		<![CDATA[
+			select  * from supply_company order by bGroup desc, bStep asc
+		]]>
+	</select>
+
+
+	<select id="read" resultType="MaterialVO">
+	<![CDATA[
+		select * from material_stock where ms_Num = #{ms_num}
+	]]>
+	</select>
+	<select id="read2" resultType="MaterialVO">
+	<![CDATA[
+		select * from material_receive where mr_Num = #{mr_num}
+	]]>
+	</select>
+	<select id="read3" resultType="MaterialVO">
+	<![CDATA[
+		select * from material_delivery where md_Num = #{md_num}
+	]]>
+	</select>
+	<select id="read4" resultType="MaterialVO">
+	<![CDATA[
+		select * from supply_company where sc_Num = #{sc_num}
+	]]>
+	</select>
+	
+	
+	
+	<select id="material_Totalcount" resultType="MaterialVO">
+	<![CDATA[
+		SELECT NVL((mr.mr_count-md.md_count), 0)
+		FROM material_stock ms
+     		LEFT JOIN material_receive mr ON ms.ms_num = mr.mr_num
+     		LEFT JOIN material_delivery md ON ms.ms_num = md.md_num
+	]]>
+	</select>
+	
+	
+	
+
+	<update id="updateShape">
+	<![CDATA[
+		update material_stock set bStep = bStep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
+	<update id="updateShape2">
+	<![CDATA[
+		update material_receive set bStep = bStep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
+	<update id="updateShape3">
+	<![CDATA[
+		update material_delivery set bStep = bStep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
+	<update id="updateShape4">
+	<![CDATA[
+		update supply_company set bStep = bStep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
+	
+	
+
+	<insert id="insertReply">
+	<![CDATA[
+		insert into material_stock (ms_Num, mr_Num, md_Num, bGroup, bStep, bIndent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{mr_Num}, #{md_Num}, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	<insert id="insertReply2">
+	<![CDATA[
+		insert into material_receive (mr_Num, sc_Num, emp_Num, mr_date, bGroup, bStep, bIndent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	<insert id="insertReply3">
+	<![CDATA[
+		insert into material_delivery (ms_Num, ms_mr_Num, ms_md_Num, bGroup, bStep, bIndent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	<insert id="insertReply4">
+	<![CDATA[
+		insert into supply_company (sc_Num, bGroup, bStep, bIndent, users_id, sc_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{sc_remarks})
+	]]>
+	</insert>
+	
+	
+
+	<insert id="insertBoard">
+	<![CDATA[
+		insert into material_stock (ms_Num, ms_mr_Num, ms_md_Num, bgroup, bstep, bindent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, MATERIAL_STOCK_SEQUENCE.currval, 0, 0, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	<insert id="insertBoard2">
+	<![CDATA[
+		insert into material_receive (ms_Num, ms_mr_Num, ms_md_Num, bgroup, bstep, bindent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, MATERIAL_STOCK_SEQUENCE.currval, 0, 0, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	<insert id="insertBoard3">
+	<![CDATA[
+		insert into material_delivery (ms_Num, ms_mr_Num, ms_md_Num, bgroup, bstep, bindent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, MATERIAL_STOCK_SEQUENCE.currval, 0, 0, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	<insert id="insertBoard4">
+	<![CDATA[
+		insert into supply_company (sc_Num, ms_mr_Num, ms_md_Num, bgroup, bstep, bindent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, MATERIAL_STOCK_SEQUENCE.currval, 0, 0, #{users_id}, #{ms_remarks})
+	]]>
+	</insert>
+	
+	
+
+	<delete id="delete">
+	<![CDATA[
+		delete from material_stock where ms_Num = #{ms_num}
+	]]>
+	</delete>
+	<delete id="delete2">
+	<![CDATA[
+		delete from material_receive where ms_Num = #{mr_num}
+	]]>
+	</delete>
+	<delete id="delete3">
+	<![CDATA[
+		delete from material_delivery where ms_Num = #{md_num}
+	]]>
+	</delete>
+	<delete id="delete4">
+	<![CDATA[
+		delete from supply_company where sc_Num = #{sc_num}
+	]]>
+	</delete>
+
+
+
+	<update id="updateMaterial">
+	<![CDATA[
+		update material_stock set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
+		#{ms_md_Num} where ms_Num = #{ms_num}
+	]]>
+	</update>
+	<update id="updateMaterial2">
+	<![CDATA[
+		update material_receive set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
+		#{ms_md_Num} where ms_Num = #{ms_num}
+	]]>
+	</update>
+	<update id="updateMaterial3">
+	<![CDATA[
+		update material_delivery set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
+		#{ms_md_Num} where ms_Num = #{ms_num}
+	]]>
+	</update>
+	<update id="updateMaterial4">
+	<![CDATA[
+		update supply_company set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
+		#{ms_md_Num} where ms_Num = #{ms_num}
+	]]>
+	</update>
+
+
+	<select id="getTotalCount" resultType="int">
+	<![CDATA[
+		select count(*) from material_stock
+	]]>
+	</select>
+	<select id="getTotalCount2" resultType="int">
+	<![CDATA[
+		select count(*) from material_receive
+	]]>
+	</select>
+	<select id="getTotalCount3" resultType="int">
+	<![CDATA[
+		select count(*) from material_delivery
+	]]>
+	</select>
+	<select id="getTotalCount4" resultType="int">
+	<![CDATA[
+		select count(*) from supply_company
+	]]>
+	</select>
+
+
+
+
+
+	<select id="getListWithPaging"
+		resultType="MaterialVO">
+  		 <![CDATA[
+      		SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             material_stock 
+                         order by bGroup desc, bStep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+ 		  ]]>
+	</select> 
+	<select id="getListWithPaging2"
+		resultType="MaterialVO">
+  		 <![CDATA[
+      		SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             material_receive 
+                         order by bGroup desc, bStep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+ 		  ]]>
+	</select> 
+	<select id="getListWithPaging3"
+		resultType="MaterialVO">
+  		 <![CDATA[
+      		SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             material_delivery 
+                         order by bGroup desc, bStep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+ 		  ]]>
+	</select> 
+	<select id="getListWithPaging4"
+		resultType="MaterialVO">
+  		 <![CDATA[
+      		SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             supply_company 
+                         order by bGroup desc, bStep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+ 		  ]]>
+	</select> 
+</mapper>

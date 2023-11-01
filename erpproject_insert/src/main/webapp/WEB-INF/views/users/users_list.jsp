@@ -81,6 +81,7 @@
 				                  </td>
 				                  <td>${users.users_join}</td>
 				                  <td>
+				                  	<a href="${pageContext.request.contextPath}/users/reply_view/${users.users_id}"><button class="btn btn-success" value="${users.users_id}">수정</button></a>
 				                    <a href="${pageContext.request.contextPath}/users/users_delete/${users.users_id}"><button class="btn btn-danger" value="${users.users_id}">삭제</button></a>
 				                  </td>
 				                </tr>

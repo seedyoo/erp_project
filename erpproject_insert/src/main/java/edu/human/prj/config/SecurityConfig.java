@@ -52,7 +52,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/board/**").hasAnyRole("USER") 
 		.antMatchers("/board/**").hasAnyRole("ADMIN")
 		.antMatchers("/user/**").hasAnyRole("USER") 
+		.antMatchers("/user/**").hasAnyRole("ADMIN") 
+		.antMatchers("/admin/**").hasAnyRole("USER")
 		.antMatchers("/admin/**").hasAnyRole("ADMIN")
+//		.antMatchers("/hrm/**").hasAnyRole("USER")
+//		.antMatchers("/hrm/**").hasAnyRole("ADMIN")
+		.antMatchers("/material/**").hasAnyRole("USER")
+		.antMatchers("/material/**").hasAnyRole("ADMIN")
 		.antMatchers("/**").permitAll();
 		
 		http.formLogin()
