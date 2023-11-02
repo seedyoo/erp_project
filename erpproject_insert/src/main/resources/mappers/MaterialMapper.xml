@@ -93,17 +93,17 @@
 	</insert>
 	<insert id="insertReply2">
 	<![CDATA[
-		insert into material_receive (mr_Num, sc_Num, emp_Num, mr_date, bGroup, bStep, bIndent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{ms_remarks})
+		insert into material_receive (mr_Num, users_id, sc_Num, emp_Num, mr_date, mr_Price, mr_Name, mr_Count, mr_remarks, bGroup, bStep, bIndent) values (MATERIAL_RECEIVE_SEQUENCE.nextval, #{users_id}, #{sc_Num}, #{emp_Num}, #{mr_date}, #{mr_price}, #{mr_Name}, #{mr_count}, #{mr_remarks}, #{bgroup}, #{bstep}+1, #{bindent}+1)
 	]]>
 	</insert>
 	<insert id="insertReply3">
 	<![CDATA[
-		insert into material_delivery (ms_Num, ms_mr_Num, ms_md_Num, bGroup, bStep, bIndent, users_id, ms_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{ms_mr_Num}, #{ms_md_Num}, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{ms_remarks})
+		insert into material_delivery (md_Num, sc_Num, emp_Num, users_id, md_date, md_Price, md_Name, md_Count, md_remarks, bGroup, bStep, bIndent) values (MATERIAL_RECEIVE_SEQUENCE.nextval, #{sc_Num}, #{emp_Num}, #{users_id}, #{md_date}, #{md_price}, #{md_Name}, #{md_count}, #{md_remarks}, #{bgroup}, #{bstep}+1, #{bindent}+1)
 	]]>
 	</insert>
 	<insert id="insertReply4">
 	<![CDATA[
-		insert into supply_company (sc_Num, bGroup, bStep, bIndent, users_id, sc_remarks) values (MATERIAL_STOCK_SEQUENCE.nextval, #{bgroup}, #{bstep}+1, #{bindent}+1, #{users_id}, #{sc_remarks})
+		insert into supply_company (sc_Num, users_id, sc_name, sc_material, sc_remarks, bGroup, bStep, bIndent) values (SUPPLY_COMPANY_SEQUENCE.nextval, #{users_id}, #{sc_name}, #{sc_material}, #{sc_remarks}, #{bgroup}, #{bstep}+1, #{bindent}+1)
 	]]>
 	</insert>
 	
@@ -157,26 +157,26 @@
 
 	<update id="updateMaterial">
 	<![CDATA[
-		update material_stock set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
-		#{ms_md_Num} where ms_Num = #{ms_num}
+		update material_stock set mr_Num = #{mr_Num}, md_Num =
+		#{md_Num}, ms_Remarks = #{ms_Remarks} where ms_Num = #{ms_num}
 	]]>
 	</update>
 	<update id="updateMaterial2">
 	<![CDATA[
-		update material_receive set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
-		#{ms_md_Num} where ms_Num = #{ms_num}
+		update material_receive set sc_Num = #{sc_Num}, emp_Num =
+		#{emp_Num}, mr_Remarks = #{mr_Remarks} where mr_Num = #{mr_num}
 	]]>
 	</update>
 	<update id="updateMaterial3">
 	<![CDATA[
-		update material_delivery set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
-		#{ms_md_Num} where ms_Num = #{ms_num}
+		update material_delivery set sc_Num = #{sc_Num}, emp_Num =
+		#{emp_Num}, md_Remarks = #{md_Remarks} where md_Num = #{md_num}
 	]]>
 	</update>
 	<update id="updateMaterial4">
 	<![CDATA[
-		update supply_company set ms_mr_Num = #{ms_mr_Num}, ms_md_Num =
-		#{ms_md_Num} where ms_Num = #{ms_num}
+		update supply_company set sc_Name = #{sc_Name}, sc_Material =
+		#{sc_Material}, sc_Remarks = #{sc_Remarks} where sc_Num = #{sc_num}
 	]]>
 	</update>
 

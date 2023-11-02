@@ -12,6 +12,7 @@ public interface MaterialService {
 	public void writeReply(MaterialVO material);
 
 	public MaterialVO get(int mno);
+	public MaterialVO get2(int mttcount);
 	public int modify(MaterialVO material);
 	
 	public List<MaterialVO> getList();

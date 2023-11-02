@@ -36,6 +36,12 @@ public class MaterialServiceImpl implements MaterialService {
 		log.info("get..........");
 		return mapper.read(mno);
 	}
+	@Override
+	public MaterialVO get2(int mttcount) {
+		
+		log.info("get2..........");
+		return mapper.material_Totalcount(mttcount);
+	}
 
 	@Override
 	public void writeMaterial(MaterialVO materialVO) {

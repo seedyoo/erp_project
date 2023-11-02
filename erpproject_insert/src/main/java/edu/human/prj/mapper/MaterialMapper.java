@@ -13,6 +13,7 @@ public interface MaterialMapper {
 	public List<MaterialVO> getList();	
 	public List<MaterialVO> material_Totalcount();	
 	public MaterialVO read(int mno);		
+	public MaterialVO material_Totalcount(int mttcount);		
 	public int updateShape(MaterialVO materialVO);		
 	public int insertReply(MaterialVO materialVO);	
 	public int insertMaterial(MaterialVO materialVO);

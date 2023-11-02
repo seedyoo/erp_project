@@ -82,8 +82,8 @@
 				                  <td>${material.mtcount}</td>
 				                  
 				                  <td>
-				                    <%-- <a href="${pageContext.request.contextPath}/board/reply_view/${board.bid}"><button class="btn btn-success" value="${board.bid}">수정</button></a> --%>
-				                    <a href="${pageContext.request.contextPath}/board/delete/${material.ms_num}"><button class="btn btn-danger" value="${material.ms_num}">삭제</button></a>
+				                    <a href="${pageContext.request.contextPath}/material/reply_view/${material.ms_num}"><button class="btn btn-success" value="${material.ms_num}">수정</button></a>
+				                    <a href="${pageContext.request.contextPath}/material/delete/${material.ms_num}"><button class="btn btn-danger" value="${material.ms_num}">삭제</button></a>
 				                  </td>
 				                </tr>
 				                </c:forEach>	
@@ -122,7 +122,7 @@
 				          
 				          <hr/>
 				          <div class="d-flex justify-content-center">
-				            <a href="${pageContext.request.contextPath}/material/reply_view/${material.ms_stock}"><button class="btn btn-primary" value="${material.ms_stock}">수정</button></a>
+				            <%-- <a href="${pageContext.request.contextPath}/material/reply_view/${material.ms_stock}"><button class="btn btn-primary" value="${material.ms_stock}">수정</button></a> --%>
 
 							
 				        </div>
