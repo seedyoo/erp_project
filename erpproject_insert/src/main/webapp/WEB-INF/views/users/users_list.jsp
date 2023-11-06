@@ -63,7 +63,7 @@
 				              <thead>
 				                <tr class="text-center">
 				                  <th>유저ID</th>
-				                  <th>유저PW</th>
+				                  
 				                  <th>유저이름</th>
 				                  <th>가입날짜</th>
 				                  <th class="text-center">삭제</th>
@@ -74,14 +74,14 @@
 				              <c:forEach var="users" items="${userss}">
 				                <tr class="text-center">
 				                  <td>${users.users_id}</td>
-				                  <td>${users.users_pw}</td>
+				                  
 				                  <td>
 				                  	<c:forEach begin="1" end="${board.bindent}">[Re]</c:forEach>
 				                    <a href="${pageContext.request.contextPath}/users/users_content/${users.users_id}">${users.users_name}</a>
 				                  </td>
 				                  <td>${users.users_join}</td>
 				                  <td>
-				                  	<a href="${pageContext.request.contextPath}/users/reply_view/${users.users_id}"><button class="btn btn-success" value="${users.users_id}">수정</button></a>
+				                  	<a href="${pageContext.request.contextPath}/users/users_content2/${users.users_id}"><button class="btn btn-success" value="${users.users_id}">수정</button></a>
 				                    <a href="${pageContext.request.contextPath}/users/users_delete/${users.users_id}"><button class="btn btn-danger" value="${users.users_id}">삭제</button></a>
 				                  </td>
 				                </tr>
@@ -131,58 +131,59 @@
 				                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button><br />
 				                  </div>
 				                  
-				                  <form id="modal-form" action="${pageContext.request.contextPath}/board/write" method="POST" role="form">
+				                  <form id="modal-form" action="${pageContext.request.contextPath}/users/users_write" method="POST" role="form">
 					                  <div class="modal-body">
-					                  
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-id" placeholder="Id" name="users_id">
-		                                  <label for="recipient-id" class="col-form-label">아이디</label>
-		                                  <div class="double_check text-end">
-		                                  	<a href="#" class="btn btn-outline-secondary mt-2">중복확인</a>
+					                    
+					                      <div class="form-floating mb-2">
+		                                    <input type="text" name="users_id" class="form-control" placeholder="users_id" />
+		                                    <label for="recipient-id" class="col-form-label">아이디</label>
+		                                    <!-- <div class="double_check text-end">
+		                                        <a href="#" class="btn btn-outline-secondary mt-2">중복확인</a>
+		                                    </div> -->
 		                                  </div>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-pw" placeholder="Pw" name="users_pw">
-		                                  <label for="recipient-pw" class="col-form-label">비밀번호</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-pw" placeholder="Pw" name="users_pw">
-		                                  <label for="recipient-pw" class="col-form-label">비밀번호확인</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-name" placeholder="Name" name="users_name">
-		                                  <label for="recipient-name" class="col-form-label">이름</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-position" placeholder="Position" name="users_position">
-		                                  <label for="recipient-position" class="col-form-label">직급</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-rrnum" placeholder="Rrnum" name="users_rrnum">
-		                                  <label for="recipient-rrnum" class="col-form-label">주민번호</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-email" placeholder="Email" name="users_email">
-		                                  <label for="recipient-email" class="col-form-label">이메일</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-add" placeholder="Add" name="users_add">
-		                                  <label for="recipient-add" class="col-form-label">주소</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <input type="text" class="form-control" id="recipient-hp" placeholder="Hp" name="users_hp">
-		                                  <label for="recipient-hp" class="col-form-label">전화번호</label>
-		                                </div>
-					                    <div class="form-floating mb-3">
-		                                  <textarea class="form-control" id="recipient-remarks" placeholder="Remarks" name="users_remarks" ></textarea>
-		                                  <label for="recipient-remarks" class="col-form-label">비고</label>
-		                                </div>
-		                                
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_pw" class="form-control" placeholder="users_pw" />
+		                                    <label for="recipient-pw" class="col-form-label">비밀번호</label>
+		                                  </div>
+		                                  <!-- <div class="form-floating mb-2">
+		                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+		                                    <label for="floatingPassword">비밀번호확인</label>
+		                                  </div> -->
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_name" class="form-control" placeholder="users_name" />
+		                                    <label for="recipient-name" class="col-form-label">이름</label>
+		                                  </div>
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_position" class="form-control" placeholder="users_position" />
+		                                    <label for="recipient-position" class="col-form-label">직급</label>
+		                                  </div>
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_rrnum" class="form-control" placeholder="users_rrnum" />
+		                                    <label for="recipient-rrnum" class="col-form-label">주민번호</label>
+		                                  </div>
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_email" class="form-control" placeholder="users_email" />
+		                                    <label for="recipient-email" class="col-form-label">이메일</label>
+		                                  </div>
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_add" class="form-control" placeholder="users_add" />
+		                                    <label for="recipient-add" class="col-form-label">주소</label>
+		                                  </div>
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_hp" class="form-control" placeholder="users_hp" />
+		                                    <label for="recipient-hp" class="col-form-label">전화번호</label>
+		                                  </div>
+		                                  <div class="form-floating mb-2">
+		                                    <input type="text" name="users_remarks" class="form-control" placeholder="users_remarks" />
+		                                    <label for="recipient-remarks" class="col-form-label">비고</label>
+		                                  </div>
+					                    
 					                  </div>
-					                  
 					                  <div class="modal-footer">
-					                    <button id="users_send-users" type="button" class="btn btn-primary" data-bs-dismiss="modal" >전송</button>
-					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+					                    <input id="send-users" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="전송"/>
+					                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+	<!-- 				                    <button id="send-board" type="button" class="btn btn-primary" data-bs-dismiss="modal" >전송</button>
+					                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button> -->
 					                  </div>
 				                  </form>
 				                  

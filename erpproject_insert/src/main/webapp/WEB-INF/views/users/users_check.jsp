@@ -38,43 +38,43 @@
                 <input type="text" placeholder="users_id" value="${users.users_id}" class="form-control" disabled readonly />
               	<input type="hidden" placeholder="users_id" value="${users.users_id}" name="users_id" />
               </div>
-              <div class="form-group">
+              <%-- <div class="form-group">
                 <label> 비밀번호 </label>
-                <input type="text" placeholder="users_password" value="${users.users_pw}" class="form-control" name="users_pw"/>
-              </div>
+                <input type="text" placeholder="users_password" value="${users.users_pw}" class="form-control" name="users_pw" disabled readonly/>
+              </div> --%>
               <div class="form-group">
                 <label> 이름 </label>
-                <input type="text" placeholder="users_name" value="${users.users_name}" class="form-control" name="users_name"/>
+                <input type="text" placeholder="users_name" value="${users.users_name}" class="form-control" name="users_name" disabled readonly/>
               </div>
               <div class="form-group">
                 <label> 직급 </label>
-                <input type="text" placeholder="users_position" value="${users.users_position}" class="form-control" name="users_position"/>
+                <input type="text" placeholder="users_position" value="${users.users_position}" class="form-control" name="users_position" disabled readonly/>
               </div>
               <div class="form-group">
                 <label> 주민번호 </label>
-                <input placeholder="users_rrnum" value="${users.users_rrnum}" class="form-control" name="users_rrnum"/>
+                <input placeholder="users_rrnum" value="${users.users_rrnum}" class="form-control" name="users_rrnum" disabled readonly/>
               </div>
               <div class="form-group">
                 <label> 이메일 </label>
-                <input placeholder="users_email" value="${users.users_email}" class="form-control" name="users_email"/>
+                <input placeholder="users_email" value="${users.users_email}" class="form-control" name="users_email" disabled readonly/>
               </div>
               <div class="form-group">
                 <label> 주소 </label>
-                <input placeholder="users_add" value="${users.users_add}" class="form-control" name="users_add"/>
+                <input placeholder="users_add" value="${users.users_add}" class="form-control" name="users_add" disabled readonly/>
               </div>
               <div class="form-group">
                 <label> 전화번호 </label>
-                <input placeholder="users_hp" value="${users.users_hp}" class="form-control" name="users_hp"/>
+                <input placeholder="users_hp" value="${users.users_hp}" class="form-control" name="users_hp" disabled readonly/>
               </div>
               <div class="form-group">
                 <label> 비고 </label>
-                <input placeholder="btitle" value="${users.users_remarks}" class="form-control" name="users_remarks"/>
+                <input placeholder="btitle" value="${users.users_remarks}" class="form-control" name="users_remarks" disabled readonly/>
               </div>
               
               <div class="mt-3 d-flex justify-content-between">
-                <button id="users_update-users" class="btn btn-success">Update</button>
-                <a href="/users/users_list" class="btn btn-danger">돌아가기</a>
+                <!-- <button id="users_update-users" class="btn btn-success">Update</button> -->
                 <!-- <button class="btn btn-danger">Cancel</button> -->
+                <a href="/users/users_list" class="btn btn-danger">돌아가기</a>
               </div>
             </div>
             </form>

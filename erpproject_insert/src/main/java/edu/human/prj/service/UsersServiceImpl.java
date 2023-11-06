@@ -3,6 +3,7 @@ package edu.human.prj.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.human.prj.mapper.UsersMapper;
@@ -33,19 +34,35 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public void writeUsers(UsersVO usersVO) {
-
+		
+		/* UsersVO users = new UsersVO(); */
+		usersVO.setUsers_id(usersVO.getUsers_id());
+		usersVO.setUsers_pw(new BCryptPasswordEncoder().encode(usersVO.getUsers_pw()));
+		usersVO.setEnabled(usersVO.getEnabled());
+		
 		mapper.insertUsers(usersVO);
+		mapper.insertAuthorities(usersVO);
+	}
+	@Override
+	public void writeReply(UsersVO usersVO) {
+		mapper.updateShape(usersVO);
+		mapper.insertReply(usersVO);
+
 	}
 
 	@Override
-	public String remove(String users_Id) {
+	public int remove(String users_Id) {
 		log.info("remove..........");
+		mapper.adelete(users_Id);
 		return mapper.delete(users_Id);
 	}
 
 	@Override
-	public String modify(UsersVO users) {
+	public int modify(UsersVO users) {
 		log.info("service modify");
+		/* users.setUsers_id(users.getUsers_id()); */
+		users.setUsers_pw(new BCryptPasswordEncoder().encode(users.getUsers_pw()));
+		users.setEnabled(users.getEnabled());
 		return mapper.updateUsers(users);
 	}
 

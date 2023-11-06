@@ -12,6 +12,11 @@
 			select  * from users order by users_num desc
 		]]>
 	</select>
+	<update id="updateShape">
+	<![CDATA[
+		update users set bStep = bStep + 1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
 
 	<select id="read" resultType="UsersVO">
 	<![CDATA[
@@ -24,10 +29,29 @@
 		insert into users (users_id, users_pw, users_name, users_rrnum, users_email, users_hp, users_add, users_position, users_join, users_remarks, users_num) values (#{users_id}, #{users_pw}, #{users_name}, #{users_rrnum}, #{users_email}, #{users_hp}, #{users_add}, #{users_position}, sysdate, #{users_remarks}, users_sequence.nextval )
 	]]>
 	</insert>
+	
+	<insert id="insertAuthorities">
+	<![CDATA[
+		insert into AUTHORITIES (users_id,AUTHORITY) values(#{users_id},'ROLE_USER')
+	]]>
+	</insert>
 
 	<delete id="delete">
 	<![CDATA[
 		delete from users where users_Id = #{users_id}
+	]]>
+	</delete>
+	
+	<update id="updateUsers">
+	<![CDATA[
+		update users set users_Pw = #{users_pw}, users_Name =
+		#{users_name}, users_Rrnum = #{users_rrnum}, users_Email = #{users_email}, users_Hp = #{users_hp}, users_Add = #{users_add}, users_Position = #{users_position}, users_Remarks = #{users_remarks} where users_Id = #{users_id}
+	]]>
+	</update>
+	
+	<delete id="adelete">
+	<![CDATA[
+		delete from authorities where users_Id = #{users_id}
 	]]>
 	</delete>
 

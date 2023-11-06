@@ -1,7 +1,12 @@
 package edu.human.prj.vo;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +33,12 @@ public class UsersVO {
 	private String users_remarks;
 	private int enabled;
 	private int users_num;
-
+	
+	/*
+	 * public UsersVO(String users_id, String users_pw) { UsersVO users = new
+	 * UsersVO(); users.setUsers_id(users_id); users.setUsers_pw(new
+	 * BCryptPasswordEncoder().encode(users_pw)); users.setEnabled(enabled); }
+	 */
 	private List<AuthVO> authList;
 	
 }

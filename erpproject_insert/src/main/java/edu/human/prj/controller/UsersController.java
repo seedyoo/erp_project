@@ -74,8 +74,17 @@ public class UsersController {
 		
 		model.addAttribute("users",usersService.get(users.getUsers_id()));		
 		
+		return "/users/users_check";
+	}
+	@GetMapping("/users_content2/{users_id}")
+	public String content2(UsersVO users,Model model) {
+		log.info("users_content2() .." + users);		
+		
+		model.addAttribute("users",usersService.get(users.getUsers_id()));		
+		
 		return "/users/users_update";
 	}
+	
 	
 	@PostMapping("/users_update")
 	public String update(UsersVO users) {
@@ -85,5 +94,6 @@ public class UsersController {
 		
 		return "redirect:/users/users_list";
 	}
+	
 	
 }

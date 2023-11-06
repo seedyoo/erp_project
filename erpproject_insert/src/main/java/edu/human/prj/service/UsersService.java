@@ -9,12 +9,13 @@ import edu.human.prj.vo.UsersVO;
 public interface UsersService {
 
 	public void writeUsers(UsersVO users);
+	public void writeReply(UsersVO users);
 
 	public UsersVO get(String uid);
-	public String modify(UsersVO users);
+	public int modify(UsersVO users);
 	
 	public List<UsersVO> getList();
-	public String remove(String users_id);
+	public int remove(String users_id);
 	
     // 페이징 처리 함수
     public int getTotal();

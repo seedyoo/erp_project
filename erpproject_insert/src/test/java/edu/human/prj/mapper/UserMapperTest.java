@@ -29,7 +29,7 @@ class UserMapperTest {
 		users.setUsers_pw(new BCryptPasswordEncoder().encode("654321"));
 		users.setEnabled(1);
 				
-		usersMapper.insertUser(users);
+		usersMapper.insertUsers(users);
 		usersMapper.insertAuthorities(users);
 		
 		
