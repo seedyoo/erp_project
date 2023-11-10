@@ -33,7 +33,7 @@
 				        <a target="_blank" href="https://datatables.net"> official DataTables documentation </a>
 				        .
 				      </p> -->
-				      <div class="hrm_check">
+				      <!-- <div class="hrm_check">
 				            
 				            <hr>
 				            
@@ -49,7 +49,20 @@
 				        
 				                <button type="submit" class="hpr_search-button">조 회</button>
 				            </form>
-				        </div>
+				        </div> -->
+				        <div class="search_wrap">
+							<div class="search_area">
+								<select name="type">
+					                <option value="" <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+					                <option value="I" <c:out value="${pageMaker.cri.type eq 'I'?'selected':'' }"/>>ID</option>
+					                <option value="N" <c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>이름</option>
+					                <option value="IN" <c:out value="${pageMaker.cri.type eq 'IN'?'selected':'' }"/>>ID+이름</option>
+
+				           		 </select>
+								<input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+								<button>조회</button>
+							</div>
+						</div>
 				        <hr>
 				      <!-- DataTales Example -->
 				      <div class="card shadow mb-4 mt-4">
@@ -199,6 +212,14 @@
 				  </div>
 		  </section>
 	  </div>
+	  
+	  <form id="actionForm" action="/users/users_list" method="GET">
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+					<input type="hidden" name="type" value="${pageMaker.cri.type }">
+	  </form>
+	  
 </main>
 
 		<%@ include file = "../common/footer.jsp" %>
@@ -211,6 +232,42 @@ $(document).ready(function(){
 	$( "#users_send-users" ).on( "click", function() {
 		$("#modal-form").submit();
 	});
+});
+
+let actionForm = $("#actionForm");
+
+$(".search_area button").on("click", function(e){
+	
+	var type = $(".search_area select").val();
+	var keyword = $(".search_area input[name='keyword']").val();
+	
+	var sKey = '<c:out value="${pageMaker.cri.keyword}"/>';
+	// Criteria 필드 멤버의 검색어.
+	
+	console.log("이전 검색어: " + sKey);
+	console.log("현재 검색어: " + keyword);
+	
+	if(!type){
+		alert("키워드를 입력하세요");
+		return false;
+	}
+	
+	if(!keyword){
+		alert("키워드를 입력하세요.");
+		return false;
+	}
+	
+	if(sKey != keyword){
+		actionForm.find("input[name='pageNum']").val(1);
+		// 새로운 검색어라면 1페이지로 이동.
+	}
+	
+	
+	actionForm.find("input[name='type']").val(type);
+	actionForm.find("input[name='keyword']").val(keyword);
+	// 1페이지로 이동하는 구문
+	/* actionForm.find("input[name='pageNum']").val(1); */
+	actionForm.submit();
 });
 </script>
 

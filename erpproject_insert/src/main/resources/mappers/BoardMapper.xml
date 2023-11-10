@@ -11,6 +11,43 @@
 			select  * from noticeboard order by bGroup desc, bStep asc
 		]]>
 	</select>
+	
+	
+	<select id="titleSearch" resultType="BoardVO">
+		<![CDATA[
+			select * 
+			from(
+        
+                select rownum as RNUM, bid, btitle, bcontent, bname
+                from noticeboard 
+                where rownum <= 10 and btitle like '%#{btitle}%'
+                )
+                
+        	where RNUM > 0;
+		]]>
+	</select>
+	<!-- <select id="titleSearch" resultType="BoardVO">
+		<![CDATA[
+			SELECT btitle FROM noticeboard where btitle like '%#{btitle}%'
+		]]>
+	</select>
+ 	<select id="contentSearch" resultType="BoardVO">
+		<![CDATA[
+			SELECT bcontent FROM noticeboard where bcontent like '%#{bcontent}%'
+		]]>
+	</select>
+	<select id="nameSearch" resultType="BoardVO">
+		<![CDATA[
+			SELECT bname FROM noticeboard where bname like '%#{bname}%'
+		]]>
+	</select>
+ 	<select id="tcSearch" resultType="BoardVO">
+		<![CDATA[
+			SELECT btitle, bcontent FROM noticeboard where btitle like '%#{btitle}%' or bcontent like '%#{bcontent}%'
+		]]>
+	</select> -->
+ 	
+ 	
 
 	<select id="read" resultType="BoardVO">
 	<![CDATA[
@@ -51,9 +88,18 @@
 
 
 	<select id="getTotalCount" resultType="int">
-	<![CDATA[
+	
 		select count(*) from noticeboard
-	]]>
+		
+		<if test="keyword != null">
+        
+            <!-- Oracle -->
+            <!-- where title like '%'||#{keyword}||'%' -->
+            where bid > 0 <include refid="criteria"></include>
+            
+        
+        </if>
+	
 	</select>
 
 	<select id="getListWithPaging"
@@ -67,7 +113,36 @@
                              noticeboard 
                          order by bGroup desc, bStep asc   
              ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+          ]]>
+          
+          <if test="keyword != null">
+                    <!-- and title like '%'||#{keyword}||'%'  -->
+                    <include refid="criteria"></include>
+          </if>
+          
+          <![CDATA[
          ) WHERE RNUM > (#{pageNum}-1) * #{amount}
  		  ]]>
+ 		  
 	</select> 
+	
+	<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							btitle like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							bcontent like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							bname like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 </mapper>

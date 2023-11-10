@@ -18,7 +18,7 @@ public interface BoardService {
 	public int remove(int bId);
 	
     // 페이징 처리 함수
-    public int getTotal();
+    public int getTotal(Criteria cri);
 	public List<BoardVO> getListWithPaging(Criteria cri);
 
 }

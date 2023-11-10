@@ -57,6 +57,16 @@
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from users
+		
+		<if test="keyword != null">
+        
+            <!-- Oracle -->
+            <!-- where title like '%'||#{keyword}||'%' -->
+            where users_num > 0 <include refid="criteria"></include>
+            
+        
+        </if>
+		
 	</select>
 
 	<select id="getListWithPaging"
@@ -70,9 +80,36 @@
                              users 
                          order by users_Num desc   
              ) A WHERE ROWNUM <= #{pageNum} * #{amount}
-         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+             ]]>
+          
+	          <if test="keyword != null">
+	                    <!-- and title like '%'||#{keyword}||'%'  -->
+	                    <include refid="criteria"></include>
+	          </if>
+             
+           <![CDATA[ 
+         	) WHERE RNUM > (#{pageNum}-1) * #{amount}
  		  ]]>
 	</select> 
+	
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							users_id like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'N'.toString()">
+							users_name like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
 	
 	<resultMap id="userMap" type="UsersVO">
 	    <result property="users_id" column="users_id"/>

@@ -65,8 +65,10 @@ public class BoardServiceImpl implements BoardService {
 
 	// 페이징 처리 함수
 	@Override
-	public int getTotal() {
+	public int getTotal(Criteria cri) {
 		log.info("service:getTotal()..");
-		return mapper.getTotalCount();
+		return mapper.getTotalCount(cri);
 	}
+	
+	
 }
